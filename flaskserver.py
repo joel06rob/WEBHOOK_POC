@@ -11,10 +11,10 @@ def webhook():
         
         #Parse JSON
         name = data.get("name")
-        age = data.get("age")
+        phoneNumber = data.get("phone")
         message = data.get("message")
 
-        print(f"Message Details: \nName: {name} \nAge: {age} \nMessage: {message}")
+        print(f"{phoneNumber} - {name}: \nMessage: {message}")
 
 
         return jsonify({"status":"success", "message":"JSON received"}), 200
