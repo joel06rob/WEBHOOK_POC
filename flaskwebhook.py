@@ -9,17 +9,22 @@ name = input("Name: ")
 phoneNumber = input("Phone (+44): ")
 
 print(f"Successfully setup your account. \nWelcome {name}!")
-message = input("Message: ")
 
-while len(message) > 100:
-    message = input("Too Long! Please Try Again: ")
-
+while True:
+    message = input("YOU: ")
 
 
-data = {"name": name,
-        "phone": phoneNumber,
-        "message": message}
+    if message.lower() == "exit":
+        print("EXITING CONVERSATION...")
+        break
 
-r = requests.post(url, data=json.dumps(data), headers={"Content-Type": "application/json"})
-print("Status Code:", r.status_code)
-print("Response:", r.text)
+    while len(message) > 100:
+        message = input("Too Long! Please Try Again: ")
+    
+    data = {"name": name,
+            "phone": phoneNumber,
+            "message": message}
+    
+    r = requests.post(url, data=json.dumps(data), headers={"Content-Type": "application/json"})
+    print("Status:", r.status_code)
+    print("Response:", r.text)
