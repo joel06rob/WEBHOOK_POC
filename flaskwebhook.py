@@ -27,4 +27,13 @@ while True:
     
     r = requests.post(url, data=json.dumps(data), headers={"Content-Type": "application/json"})
     print("Status:", r.status_code)
-    print("Response:", r.text)
+
+    print("New Reply:")
+    try:
+        response_json = r.json()
+        print(response_json.get("message"))
+    except ValueError:
+        print(r.text)
+
+    
+    
